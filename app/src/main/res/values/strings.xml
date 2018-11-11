@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WeatherAt</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="tab_label_week">WEEK</string>
+    <string name="tab_label_now">NOW</string>
+    <string name="tab_label_hourly">HOURLY</string>
+
+    <string name="OPEN_WEATHER_MAP_API">9b8b4c515079952799ab40e29b430ae6</string>
+    <string name="API_CALL">https://api.openweathermap.org/data/2.5/weather?q=</string>
+</resources>
