@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout_now"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/backgroundColor"
+    tools:context=".ui.fragments.NowFragment"
+    tools:layout_editor_absoluteY="81dp">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <TextView
+        android:id="@+id/city_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold_italic"
+        android:text="city"
+        android:textColor="@android:color/white"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/date_textview"
+        style="@style/textview_style"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city_textview"
+        tools:text="Sunday, December 20" />
+
+    <TextView
+        android:id="@+id/temperature_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="160dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="--"
+        android:textColor="@android:color/white"
+        android:textSize="120sp"
+        app:layout_constraintBottom_toBottomOf="@+id/swiperefresh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/condition_textview"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/degreeSymbol"
+        style="@style/textview_style"
+        android:layout_marginTop="8dp"
+        android:text="°"
+        android:textSize="78sp"
+        app:layout_constraintStart_toEndOf="@+id/temperature_textview"
+        app:layout_constraintTop_toTopOf="@+id/temperature_textview" />
+
+    <ImageView
+        android:id="@+id/weather_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/cloud_day_forecast_precipitation_snow_sun_weather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_textview" />
+
+    <TextView
+        android:id="@+id/condition_textview"
+        style="@style/textview_style"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="CLOUDY"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weather_imageview" />
+
+    <TextView
+        android:id="@+id/humidity_textview"
+        style="@style/textview_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="8dp"
+        android:text="Humidity:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/precip_textview"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/precip_textview"
+        style="@style/textview_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Precip. Chance:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/wind_textview"
+        app:layout_constraintStart_toStartOf="@+id/humidity_textview" />
+
+    <TextView
+        android:id="@+id/wind_textview"
+        style="@style/textview_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Wind Speed:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/precip_textview" />
+
+    <TextView
+        android:id="@+id/humid_value_textview"
+        style="@style/textview_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="64dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/humidity_textview"
+        app:layout_constraintTop_toTopOf="@+id/humidity_textview" />
+
+    <TextView
+        android:id="@+id/precip_value_textview"
+        style="@style/textview_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/humid_value_textview"
+        app:layout_constraintTop_toTopOf="@+id/precip_textview" />
+
+    <TextView
+        android:id="@+id/wind_value_textview"
+        style="@style/textview_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/precip_value_textview"
+        app:layout_constraintTop_toTopOf="@+id/wind_textview" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
