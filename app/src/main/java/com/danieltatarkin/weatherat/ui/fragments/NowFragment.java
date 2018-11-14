@@ -7,27 +7,21 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.danieltatarkin.weatherat.R;
-import com.danieltatarkin.weatherat.models.CurrentWeatherInfo;
 import com.danieltatarkin.weatherat.models.WeatherModel;
 import com.danieltatarkin.weatherat.networking.WeatherDataUpdate;
 import com.danieltatarkin.weatherat.receivers.ServiceResultReceiver;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.w3c.dom.Text;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -47,6 +41,9 @@ public class NowFragment extends Fragment implements ServiceResultReceiver.Recei
     private TextView dateTextView;
     private ImageView weatherIconImageView;
     private TextView conditionTextView;
+    private TextView humidityValueTV;
+    private TextView precipValueTV;
+    private TextView windValueTV;
 
     public NowFragment() {
         // Required empty public constructor
@@ -63,6 +60,11 @@ public class NowFragment extends Fragment implements ServiceResultReceiver.Recei
         tempTextView = view.findViewById(R.id.temperature_textview);
         conditionTextView = view.findViewById(R.id.condition_textview);
         weatherIconImageView = view.findViewById(R.id.weather_imageview);
+        humidityValueTV = view.findViewById(R.id.humid_value_textview);
+        precipValueTV = view.findViewById(R.id.precip_value_textview);
+        windValueTV = view.findViewById(R.id.wind_value_textview);
+
+
         swipeRefreshLayout = view.findViewById(R.id.swiperefresh);
         swipeRefreshLayout.bringToFront();
         setupReeveivers();
@@ -113,7 +115,8 @@ public class NowFragment extends Fragment implements ServiceResultReceiver.Recei
         cityTextView.setText(model.getCityName());
         tempTextView.setText(currTemp);
         conditionTextView.setText(model.getCurrWeatherInfo().get(0).getDescription().toUpperCase());
-
-
+        humidityValueTV.setText(model.getMain().getHumidity()+"%");
+        precipValueTV.setText(model.getCurrWeatherInfo().get(0).getCondition());
+        windValueTV.setText(model.getWindInfo().getSpeed()+" m/s");
     }
 }

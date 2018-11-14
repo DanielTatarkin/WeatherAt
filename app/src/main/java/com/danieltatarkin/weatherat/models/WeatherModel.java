@@ -11,6 +11,7 @@ public class WeatherModel {
     @SerializedName("coord") private CoordinatesModel coordinates;
     @SerializedName("weather") private List<CurrentWeatherInfo> currWeatherInfo = new ArrayList<>();
     @SerializedName("system") private SystemInfo sysInfo;
+    @SerializedName("wind") private WindInfo windInfo;
     @SerializedName("name") private String cityName;
     private long visibility;
 
@@ -60,5 +61,13 @@ public class WeatherModel {
 
     public void setVisibility(long visibility) {
         this.visibility = visibility;
+    }
+
+    public WindInfo getWindInfo() {
+        return windInfo;
+    }
+
+    public void setWindInfo(WindInfo windInfo) {
+        this.windInfo = windInfo;
     }
 }
