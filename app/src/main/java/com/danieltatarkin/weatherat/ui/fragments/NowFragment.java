@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,7 +68,7 @@ public class NowFragment extends Fragment implements ServiceResultReceiver.Recei
 
         swipeRefreshLayout = view.findViewById(R.id.swiperefresh);
         swipeRefreshLayout.bringToFront();
-        setupReeveivers();
+        setupReceivers();
         updateWeather();
 
 
@@ -81,7 +82,7 @@ public class NowFragment extends Fragment implements ServiceResultReceiver.Recei
         return view;
     }
 
-    private void setupReeveivers() {
+    private void setupReceivers() {
         serviceResultReceiver = new ServiceResultReceiver(new Handler());
         serviceResultReceiver.setReceiver(this);
     }
@@ -118,5 +119,24 @@ public class NowFragment extends Fragment implements ServiceResultReceiver.Recei
         humidityValueTV.setText(model.getMain().getHumidity()+"%");
         precipValueTV.setText(model.getCurrWeatherInfo().get(0).getCondition());
         windValueTV.setText(model.getWindInfo().getSpeed()+" m/s");
+    }
+
+
+    @Override
+    public void onPause() {
+        Log.d("WeatherAt", "NowFragment - onPause called");
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        Log.d("WeatherAt", "NowFragment - onStop called");
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d("WeatherAt", "NowFragment - onDestroy called");
+        super.onDestroy();
     }
 }

@@ -1,5 +1,7 @@
 package com.danieltatarkin.weatherat;
 
+import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.danieltatarkin.weatherat.ui.adapters.PagerAdapter;
@@ -8,20 +10,36 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private final int LOCATION_PERMISSION_REQUEST_CODE = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        requestLocationPermissions();
         setupBottomToolbar();
     }
 
+    private void requestLocationPermissions() {
+        if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{
+                            Manifest.permission.ACCESS_COARSE_LOCATION,
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                    },
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        }
+    }
+
     private void setupBottomToolbar() {
+
         // Find tab_layout, add 3 tabs to it
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_label_week));

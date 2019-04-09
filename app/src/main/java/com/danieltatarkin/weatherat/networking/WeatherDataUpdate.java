@@ -2,6 +2,7 @@ package com.danieltatarkin.weatherat.networking;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -38,10 +39,12 @@ public class WeatherDataUpdate extends JobIntentService {
 
     @Override
     protected void onHandleWork(@NonNull Intent intent) {
+
         try {
+            LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
             resultReceiver = intent.getParcelableExtra("receiver");
             Log.i("WeatherManager", "Executing work: " + intent);
-//            toast("Gathering weather");
 
             String API_KEY = getResources().getString(R.string.OPEN_WEATHER_MAP_API);
             String API_CALL = getResources().getString(R.string.API_CALL);
@@ -79,7 +82,6 @@ public class WeatherDataUpdate extends JobIntentService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        toast("All work complete");
     }
 
     Handler handler = new Handler();
